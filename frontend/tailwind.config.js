@@ -1,11 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "brand-primary": "rgb(48, 119, 119)",
+        "brand-secondary": "rgb(11, 50, 67)",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
+};

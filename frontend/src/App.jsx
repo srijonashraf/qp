@@ -1,10 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Login from "./pages/Login";
+import Registration from "./pages/Registration";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
-      <p className="text-indigo-700 text-3xl">Hello Bangladesh!</p>
-    </div>
+    <Fragment>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/*" element={<Login />} />
+        </Routes>
+      </Router>
+    </Fragment>
   );
 };
 
