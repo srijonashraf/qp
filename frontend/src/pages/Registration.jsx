@@ -1,6 +1,6 @@
 import React from "react";
 import Welcome from "../components/auth/registration/Welcome";
-import RegistrationFrom from "../components/auth/registration/RegistrationForm";
+import RegistrationForm from "../components/auth/registration/RegistrationForm";
 
 const Registration = () => {
   return (
@@ -11,7 +11,7 @@ const Registration = () => {
         w-full max-w-[80%] lg:flex-row gap-12 max-sm:max-w-[90%] max-sm:gap-8"
       >
         <Welcome />
-        <RegistrationFrom />
+        <RegistrationForm />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import countryCode from "../../../data/countryCode";
 
-const RegistrationFrom = () => {
+const RegistrationForm = () => {
   return (
     <div className="w-full lg:max-w-[415px] bg-white rounded-md p-6">
       <form action="" className="flex flex-col gap-3">
@@ -10,73 +11,143 @@ const RegistrationFrom = () => {
         </h3>
         <div className="flex flex-row gap-2">
           <div className="w-full flex flex-col">
-            <label htmlFor="" className="font-semibold text-sm font-manrope">
+            <label
+              htmlFor="firstName"
+              className="font-semibold text-sm font-manrope"
+            >
               First Name
             </label>
             <input
+              id="firstName"
               type="text"
               className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
             />
           </div>
           <div className="w-full flex flex-col">
-            <label htmlFor="" className="font-semibold text-sm font-manrope">
+            <label
+              htmlFor="lastName"
+              className="font-semibold text-sm font-manrope"
+            >
               Last Name
             </label>
             <input
+              id="lastName"
               type="text"
               className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
             />
           </div>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+          <label htmlFor="email" className="font-semibold text-sm font-manrope">
             Email Address
           </label>
           <input
+            id="email"
             type="email"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>
-        <div>
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+        <div className="flex flex-col">
+          <label
+            htmlFor="password"
+            className="font-semibold text-sm font-manrope"
+          >
             Password
           </label>
           <input
+            id="password"
             type="password"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>
-        {/* ToDo: Day, Month and Year will be separated */}
         <div className="flex flex-col">
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+          <label htmlFor="dob" className="font-semibold text-sm font-manrope">
             Date of Birth
           </label>
-          <input
-            type="date"
-            className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2 font-inter font-medium text-sm"
-          />
+          <div className="flex flex-row gap-2">
+            <select
+              name="dobMonth"
+              id="dobMonth"
+              className="w-1/2 p-2 rounded border border-slate-400 outline-none 
+              focus:border-2 font-inter font-medium text-[14px]"
+            >
+              <option value="">MM</option>
+              {[...Array(12)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+            <select
+              name="dobDay"
+              id="dobDay"
+              className="w-1/2 p-2 rounded border border-slate-400 outline-none 
+              focus:border-2 font-inter font-medium text-[14px]"
+            >
+              <option value="">DD</option>
+              {[...Array(31)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+            <select
+              name="dobYear"
+              id="dobYear"
+              className="w-full p-2 rounded border border-slate-400 outline-none 
+              focus:border-2 font-inter font-medium text-[14px]"
+            >
+              <option value="">YYYY</option>
+              {[...Array(new Date().getFullYear() - 1899)].map((_, i) => (
+                <option key={i + 1900} value={i + 1900}>
+                  {i + 1900}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        {/* ToDo: Country code will be added */}
         <div className="flex flex-col">
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+          <label
+            htmlFor="phoneNumber"
+            className="font-semibold text-sm font-manrope"
+          >
             Phone Number
           </label>
-          <input
-            type="tel"
-            className="w-full p-2 rounded border border-slate-300 outline-none focus:border-2"
-          />
+          <div className="flex flex-row rounded border border-slate-300 outline-none">
+            <select
+              name="country"
+              id="country"
+              className="w-1/3 p-2 rounded outline-none focus:border-2 focus:border-slate-400 
+              font-inter font-medium text-[14px]"
+            >
+              {countryCode.map((country, index) => (
+                <option key={index} value={country.code}>
+                  {`${country.code} (${country.dial_code})`}
+                </option>
+              ))}
+            </select>
+            <input
+              id="phoneNumber"
+              type="tel"
+              className="w-full p-2 rounded outline-none focus:border-2 focus:border-slate-400 
+              font-inter font-medium text-[14px]"
+            />
+          </div>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+          <label
+            htmlFor="gender"
+            className="font-semibold text-sm font-manrope"
+          >
             Your Gender
           </label>
           <select
             name="gender"
             id="gender"
             className="w-full p-2 rounded border border-slate-300 outline-none focus:border-2 
-            font-inter font-normal text-sm"
+            focus:border-slate-400 font-inter font-normal text-sm"
           >
-            <option selected>Choose Gender</option>
+            <option value="">Choose Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="others">Others</option>
@@ -84,10 +155,10 @@ const RegistrationFrom = () => {
         </div>
 
         <div className="flex items-center gap-1">
-          <input type="checkbox" name="allow_terms" id="" />
-          <p className="text-[13px] font-manrope font-[400]">
+          <input type="checkbox" name="allow_terms" id="allow_terms" />
+          <p className="text-[12px] max-sm:text-[11px] font-manrope font-[400]">
             I accept the{" "}
-            <span className="font-semibold text-brand-primary text-[13px]">
+            <span className="font-semibold text-brand-primary text-[13px] max-sm:text-[11px]">
               Terms and Conditions{" "}
             </span>
             of this website
@@ -95,8 +166,8 @@ const RegistrationFrom = () => {
         </div>
         <div>
           <button
-            className="w-full bg-brand-primary py-[6px] px-[12px] 
-        rounded-[4px] text-white font-manrope font-semibold text-base my-2"
+            className="w-full bg-brand-primary p-3
+        rounded-[4px] text-white font-manrope font-semibold text-base my-2 hover:bg-brand-primary/80"
           >
             Complete Registration!
           </button>
@@ -123,4 +194,4 @@ const RegistrationFrom = () => {
   );
 };
 
-export default RegistrationFrom;
+export default RegistrationForm;
