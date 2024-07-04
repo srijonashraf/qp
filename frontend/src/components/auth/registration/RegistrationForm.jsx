@@ -20,6 +20,7 @@ const RegistrationForm = () => {
             <input
               id="firstName"
               type="text"
+              placeholder="First Name"
               className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
             />
           </div>
@@ -32,6 +33,7 @@ const RegistrationForm = () => {
             </label>
             <input
               id="lastName"
+              placeholder="Last Name"
               type="text"
               className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
             />
@@ -44,6 +46,7 @@ const RegistrationForm = () => {
           <input
             id="email"
             type="email"
+            placeholder="Enter your email address"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>
@@ -57,6 +60,7 @@ const RegistrationForm = () => {
           <input
             id="password"
             type="password"
+            placeholder="Enter your password"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>

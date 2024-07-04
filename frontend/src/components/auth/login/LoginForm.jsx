@@ -15,6 +15,7 @@ const LoginForm = () => {
           <input
             type="email"
             id="email"
+            placeholder="Enter your email address"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>
@@ -28,6 +29,7 @@ const LoginForm = () => {
           <input
             type="password"
             id="password"
+            placeholder="Enter your password"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
           <div className="flex justify-between">
