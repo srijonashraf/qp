@@ -4,9 +4,9 @@ import LoginForm from "../components/auth/login/LoginForm";
 
 const Login = () => {
   return (
-    <div className="bg-brand-secondary h-screen">
+    <div className="bg-brand-secondary">
       <div
-        className="h-screen flex flex-col items-center 
+        className="min-h-screen py-12 flex flex-col items-center 
       lg:justify-around justify-center mx-auto 
       w-full max-w-[80%] lg:flex-row gap-12 max-sm:max-w-[90%] max-sm:gap-8"
       >
