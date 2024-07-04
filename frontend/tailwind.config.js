@@ -6,6 +6,7 @@ export default {
       colors: {
         "brand-primary": "rgb(48, 119, 119)",
         "brand-secondary": "rgb(11, 50, 67)",
+        "body-base-color": "#AFB2B7",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
