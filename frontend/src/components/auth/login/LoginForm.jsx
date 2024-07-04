@@ -9,20 +9,25 @@ const LoginForm = () => {
           Login to your Account
         </h3>
         <div className="flex flex-col">
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+          <label htmlFor="email" className="font-semibold text-sm font-manrope">
             Email Address
           </label>
           <input
             type="email"
+            id="email"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
         </div>
-        <div>
-          <label htmlFor="" className="font-semibold text-sm font-manrope">
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="password"
+            className="font-semibold text-sm font-manrope"
+          >
             Password
           </label>
           <input
             type="password"
+            id="password"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
           />
           <div className="flex justify-between">
@@ -36,8 +41,8 @@ const LoginForm = () => {
           </div>
         </div>
         <button
-          className="w-full bg-brand-primary py-[6px] px-[12px] 
-        rounded-[4px] text-white font-manrope font-semibold text-base"
+          className="w-full bg-brand-primary p-3
+        rounded-[4px] text-white font-manrope font-semibold text-base mt-1 hover:bg-brand-primary/80"
         >
           Login
         </button>
