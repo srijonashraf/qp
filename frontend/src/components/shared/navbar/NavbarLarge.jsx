@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import brandLogo from "../../../assets/image/logo.png";
-import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import CartIcon from "../../../assets/icons/navbar/CartIcon.jsx";
 import GroupIcon from "../../../assets/icons/navbar/GroupIcon.jsx";
