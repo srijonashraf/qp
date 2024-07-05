@@ -6,8 +6,8 @@ const NewsFeed = () => {
   return (
     <div className="bg-body-base-color/20 min-h-screen">
       {/* this navbars will be shifted to App.jsx later */}
-      <NavbarLarge />
       <NavbarSmall />
+      <NavbarLarge />
     </div>
   );
 };
