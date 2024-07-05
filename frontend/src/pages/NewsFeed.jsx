@@ -1,6 +1,6 @@
 import React from "react";
 import NavbarLarge from "../components/shared/navbar/NavbarLarge";
-import NavbarSmall from "../components/shared/navbar/NavbarSmall";
+import NavbarSmall from "./../components/shared/navbar/NavbarSmall";
 
 const NewsFeed = () => {
   return (
