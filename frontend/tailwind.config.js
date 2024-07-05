@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "brand-primary": "rgb(48, 119, 119)",
-        "brand-secondary": "rgb(11, 50, 67)",
+        "brand-primary": "#307777",
+        "brand-secondary": "#154C65",
         "body-base-color": "#AFB2B7",
       },
       fontFamily: {
