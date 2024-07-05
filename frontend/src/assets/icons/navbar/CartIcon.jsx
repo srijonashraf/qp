@@ -2,7 +2,7 @@ const CartIcon = ({ width = "15", height = "15", ...props }) => (
   <svg
     width={width}
     height={height}
-    viewBox={`0 0 ${width} ${height}`}
+    viewBox={`0 0 32 32`}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
