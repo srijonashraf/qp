@@ -5,18 +5,19 @@ import PlusIcon from "../../../assets/icons/navbar/PlusIcon";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon";
 import HomeIcon from "../../../assets/icons/navbar/HomeIcon";
 import ReelsIcon from "../../../assets/icons/navbar/ReelsIcon";
-import MarketPlaceIcon from "../../../assets/icons/navbar/MarketPlaceIcon";
+import MarketPlaceIcon from "../../../assets/icons/navbar/MarketplaceIcon";
 import CartIcon from "../../../assets/icons/navbar/CartIcon";
 import AddGroupIcon from "../../../assets/icons/navbar/AddGroupIcon";
 import BellIcon from "../../../assets/icons/navbar/BellIcon";
 import { NavLink } from "react-router-dom";
+import HomeOutlineIcon from "../../../assets/icons/navbar/HomeOutlineIcon";
 
 const NavbarSmall = () => {
   const [activeIcon, setActiveIcon] = useState(null);
 
   const menuIcons = [
     {
-      icon: <HomeIcon width={16} height={16} />,
+      icon: <HomeOutlineIcon width={16} height={16} />,
       link: "/newsfeed",
       id: "home",
     },

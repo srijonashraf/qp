@@ -5,7 +5,7 @@ import CartIcon from "../../../assets/icons/navbar/CartIcon.jsx";
 import GroupIcon from "../../../assets/icons/navbar/GroupIcon.jsx";
 import HomeIcon from "../../../assets/icons/navbar/HomeIcon.jsx";
 import ReelsIcon from "../../../assets/icons/navbar/ReelsIcon.jsx";
-import MarketPlaceIcon from "../../../assets/icons/navbar/MarketPlaceIcon.jsx";
+import MarketPlaceIcon from "../../../assets/icons/navbar/MarketplaceIcon.jsx";
 import NotificationIcon from "../../../assets/icons/navbar/NotificationIcon.jsx";
 import MessengerIcon from "../../../assets/icons/navbar/MessengerIcon.jsx";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon.jsx";
