@@ -1,22 +1,24 @@
 import React from "react";
-import userAvatar from "../../../../../assets/image/user.png";
+import avatar1 from "../../../../../assets/image/user.png";
+import avatar2 from "../../../../../assets/image/user2.png";
+import avatar3 from "../../../../../assets/image/user3.png";
 
 const PageSuggestion = () => {
   const pages = [
     {
       name: "Angelina Super",
       category: "Fashion Brand",
-      img: userAvatar,
+      img: avatar1,
     },
     {
       name: "Angelina Super",
       category: "Fashion Brand",
-      img: userAvatar,
+      img: avatar2,
     },
     {
       name: "Angelina Super",
       category: "Fashion Brand",
-      img: userAvatar,
+      img: avatar3,
     },
   ];
 
@@ -30,7 +32,7 @@ const PageSuggestion = () => {
           <li key={key} className="flex items-center justify-between">
             <div className="flex gap-2 items-center">
               <img
-                className="w-10 h-10 rounded-full border-2 border-gray-400 object-cover"
+                className="w-10 h-10 rounded-full object-cover"
                 src={item.img}
                 alt={`${item.name}'s avatar`}
               />

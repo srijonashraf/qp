@@ -2,6 +2,8 @@ import React from "react";
 import SponsorAds from "../main/suggestions/subComponents/SponsorAds";
 import FriendRequest from "./subComponents/FriendRequest";
 import Birthday from "./subComponents/Birthday";
+import Contacts from "./subComponents/Contacts";
+import GroupConversations from "./subComponents/GroupConversations";
 
 const RightSidebar = () => {
   return (
@@ -9,6 +11,8 @@ const RightSidebar = () => {
       <SponsorAds />
       <FriendRequest />
       <Birthday />
+      <Contacts />
+      <GroupConversations />
     </div>
   );
 };
