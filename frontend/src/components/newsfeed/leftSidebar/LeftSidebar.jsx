@@ -3,7 +3,7 @@ import leftMenuItems from "../../../data/leftMenuItems.js";
 import userAvatar from "../../../assets/image/user.png";
 const LeftSidebar = () => {
   return (
-    <div className="bg-white p-4 min-h-screen rounded mt-2">
+    <div className="bg-white p-4 h-screen rounded mt-2">
       <ul className="flex flex-col gap-5">
         <div className="profile flex items-center gap-2">
           <img

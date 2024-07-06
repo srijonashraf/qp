@@ -7,7 +7,7 @@ import RightSidebar from "../components/newsfeed/rightSidebar/RightSidebar.jsx";
 const NewsFeed = () => {
   return (
     <div className="bg-body-base-color/20 grid grid-cols-12 gap-2 min-h-screen">
-      <div className="hidden md:block md:col-span-3 lg:col-span-2 sticky top-0">
+      <div className="hidden md:block md:col-span-3 lg:col-span-2 sticky top-0 h-screen">
         <LeftSidebar />
       </div>
       <div className="hidden lg:block lg:col-span-2">
