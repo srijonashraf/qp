@@ -9,7 +9,7 @@ import MarketPlaceIcon from "../../../assets/icons/navbar/MarketplaceIcon.jsx";
 import NotificationIcon from "../../../assets/icons/navbar/NotificationIcon.jsx";
 import MessengerIcon from "../../../assets/icons/navbar/MessengerIcon.jsx";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon.jsx";
-
+import userAvatar from "../../../assets/image/user.png";
 const NavbarLarge = () => {
   const [activeIcon, setActiveIcon] = useState(null);
 
@@ -87,10 +87,12 @@ const NavbarLarge = () => {
         <div className="col-span-2 flex justify-end gap-3">
           <MessengerIcon width="45" height="45" />
           <NotificationIcon width="45" height="45" />
-          <div
-            className="profile w-[45px] h-[45px] bg-slate-300 rounded-full border-2
-           border-brand-primary"
-          ></div>
+          <img
+            className="w-[45px] h-[45px] bg-slate-300 rounded-full border-2
+           border-brand-primary object-cover"
+            src={userAvatar}
+            alt="User Avatar"
+          />
         </div>
       </div>
     </div>
