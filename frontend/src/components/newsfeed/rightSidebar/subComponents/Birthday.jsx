@@ -22,7 +22,7 @@ const Birthday = () => {
       <h3 className="font-medium text-sm font-poppins">Birthdays</h3>
       <div className="flex items-center gap-2">
         <img src={birthdayIcon} alt="Birthday Icon" />
-        <p className="text-xs font-medium font-poppins">
+        <p className="text-xs font-medium font-poppins cursor-pointer">
           <span className="font-semibold">{birthdays[0]?.name}</span> and{" "}
           <span className="font-semibold">{Object.keys(birthdays).length}</span>{" "}
           others have birthdays today

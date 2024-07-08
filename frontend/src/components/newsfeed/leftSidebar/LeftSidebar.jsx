@@ -12,7 +12,7 @@ const LeftSidebar = () => {
             src={userAvatar}
             alt="User avatar"
           />
-          <p className="font-medium font-poppins">Chanchal Chowdhury</p>
+          <p className="font-medium font-poppins cursor-pointer">Chanchal Chowdhury</p>
         </div>
 
         <hr />

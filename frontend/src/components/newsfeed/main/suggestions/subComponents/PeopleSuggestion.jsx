@@ -30,7 +30,7 @@ const PeopleSuggestion = () => {
         <h3 className="font-bold font-roboto text-base text-brand-secondary">
           People You May Know
         </h3>
-        <p className="font-medium font-poppins text-xs text-brand-primary">
+        <p className="font-medium font-poppins text-xs text-brand-primary cursor-pointer">
           See All
         </p>
       </div>
@@ -44,13 +44,13 @@ const PeopleSuggestion = () => {
                 alt={`${item.name}'s avatar`}
               />
               <div className="flex flex-col gap-1">
-                <p className="font-roboto font-bold text-[14px]">{item.name}</p>
+                <p className="font-roboto font-bold text-[14px] cursor-pointer">{item.name}</p>
                 <p className="font-poppins font-normal text-[10px] text-brand-primary">
                   {item.matchedFriends}
                 </p>
               </div>
             </div>
-            <FriendRequestIcon className="text-brand-secondary" />
+            <FriendRequestIcon className="text-brand-secondary cursor-pointer" />
           </li>
         ))}
       </ul>

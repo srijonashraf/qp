@@ -22,9 +22,9 @@ const SponsorAds = () => {
       <ul className="flex flex-col gap-2 py-3">
         {Ads.map((item, key) => (
           <li key={key} className="flex gap-2">
-            <img src={item.img} alt="Ad image" className="rounded" />
+            <img src={item.img} alt="Ad image" className="rounded cursor-pointer" />
             <div>
-              <p className="font-medium text-[13px] font-poppinsa">
+              <p className="font-medium text-[13px] font-poppins cursor-pointer">
                 {item.title}
               </p>
               <p className="font-medium text-[10px] text-body-base-color">

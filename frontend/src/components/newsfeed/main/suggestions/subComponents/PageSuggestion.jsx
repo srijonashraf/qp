@@ -37,7 +37,7 @@ const PageSuggestion = () => {
                 alt={`${item.name}'s avatar`}
               />
               <div className="flex flex-col gap-1">
-                <p className="font-roboto font-bold text-[14px]">{item.name}</p>
+                <p className="font-roboto font-bold text-[14px] cursor-pointer">{item.name}</p>
                 <p className="font-poppins font-normal text-[10px] text-brand-primary">
                   {item.category}
                 </p>
@@ -45,7 +45,7 @@ const PageSuggestion = () => {
             </div>
             <button
               className="px-3 py-1 rounded-md bg-brand-primary font-roboto
-             text-white font-medium text-xs"
+             text-white font-medium text-xs cursor-pointer"
             >
               Follow
             </button>

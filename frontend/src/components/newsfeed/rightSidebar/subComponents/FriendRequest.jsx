@@ -43,7 +43,7 @@ const FriendRequest = () => {
               />
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <p className="font-poppins font-medium text-[14px]">
+                  <p className="font-poppins cursor-pointer font-medium text-[14px]">
                     {item.name}
                   </p>
                   <p className="font-poppins font-normal text-[10px] text-brand-primary">
