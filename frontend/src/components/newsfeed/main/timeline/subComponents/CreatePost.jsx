@@ -43,8 +43,8 @@ const CreatePost = () => {
       </div>
       <hr className="max-sm:hidden" />
       {/* Live, Upload and Feeling Section */}
-      <div className="flex my-3 justify-center max-sm:hidden">
-        <ul className="flex gap-10">
+      <div className="flex my-3 max-sm:hidden">
+        <ul className="flex w-full justify-around items-center">
           {activity.map((item, key) => (
             <li
               key={key}

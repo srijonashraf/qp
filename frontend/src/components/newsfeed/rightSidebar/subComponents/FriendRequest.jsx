@@ -47,7 +47,7 @@ const FriendRequest = () => {
                     {item.name}
                   </p>
                   <p className="font-poppins font-normal text-[10px] text-brand-primary">
-                    {item.date} .
+                    {item.date} ·
                   </p>
                 </div>
                 <div className="flex gap-2">
