@@ -55,8 +55,10 @@ const GroupConversations = () => {
         ))}
       </ul>
       <div className="flex gap-2 items-center mt-2">
-        <RoundedPlusIcon />
-        <p className="font-semibold font-raleway text-base">Create New Group</p>
+        <RoundedPlusIcon className="cursor-pointer" />
+        <p className="font-semibold font-raleway text-base cursor-pointer">
+          Create New Group
+        </p>
       </div>
     </div>
   );
