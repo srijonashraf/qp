@@ -5,11 +5,11 @@ import CartIcon from "../../../assets/icons/navbar/CartIcon.jsx";
 import GroupIcon from "../../../assets/icons/navbar/GroupIcon.jsx";
 import HomeIcon from "../../../assets/icons/navbar/HomeIcon.jsx";
 import ReelsIcon from "../../../assets/icons/navbar/ReelsIcon.jsx";
-import MarketplaceIcon from "../../../assets/icons/navbar/MarketplaceIcon.jsx"
 import NotificationIcon from "../../../assets/icons/navbar/NotificationIcon.jsx";
 import MessengerIcon from "../../../assets/icons/navbar/MessengerIcon.jsx";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon.jsx";
 import useProfileStore from "../../../store/ProfileStore.js";
+import MarketIcon from "../../../assets/icons/navbar/MarketIcon";
 const NavbarLarge = () => {
   const [activeIcon, setActiveIcon] = useState(null);
   const { ProfilePic } = useProfileStore();
@@ -31,7 +31,7 @@ const NavbarLarge = () => {
       id: "group",
     },
     {
-      icon: <MarketplaceIcon width={32} height={30} />,
+      icon: <MarketIcon width={32} height={30} />,
       link: "/newsfeed",
       id: "marketplace",
     },

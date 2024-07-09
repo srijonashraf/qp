@@ -4,13 +4,13 @@ import MessageIcon from "../../../assets/icons/navbar/MessageIcon";
 import PlusIcon from "../../../assets/icons/navbar/PlusIcon";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon";
 import ReelsIcon from "../../../assets/icons/navbar/ReelsIcon";
-import MarketplaceIcon from "../../../assets/icons/navbar/MarketplaceIcon.jsx"
 import CartIcon from "../../../assets/icons/navbar/CartIcon";
 import AddGroupIcon from "../../../assets/icons/navbar/AddGroupIcon";
 import BellIcon from "../../../assets/icons/navbar/BellIcon";
 import { NavLink } from "react-router-dom";
 import HomeOutlineIcon from "../../../assets/icons/navbar/HomeOutlineIcon";
 import useProfileStore from "../../../store/ProfileStore";
+import MarketIcon from "../../../assets/icons/navbar/MarketIcon";
 
 const NavbarSmall = () => {
   const [activeIcon, setActiveIcon] = useState(null);
@@ -43,7 +43,7 @@ const NavbarSmall = () => {
       id: "cart",
     },
     {
-      icon: <MarketplaceIcon width={16} height={16} />,
+      icon: <MarketIcon width={16} height={16} />,
       link: "/newsfeed",
       id: "marketplace",
     },
