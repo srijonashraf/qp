@@ -12,6 +12,8 @@ import SelectStoryType from "./components/story/landing/SelectStoryType";
 import LeftSideText from "./components/story/textStory/LeftSideText";
 import PreviewText from "./components/story/textStory/PreviewText";
 import CreateStory from "./pages/CreateStory.jsx";
+import LeftSideImage from "./components/story/imageStory/LeftSideImage.jsx";
+import PreviewImage from "./components/story/imageStory/PreviewImage.jsx";
 
 const App = () => {
   const isLoggedIn = getAccessToken();
@@ -64,6 +66,16 @@ const App = () => {
                 <NavbarLarge />
                 <NavbarSmall />
                 <CreateStory LeftSide={LeftSideText} Preview={PreviewText} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/photo-story"
+            element={
+              <PrivateRoute>
+                <NavbarLarge />
+                <NavbarSmall />
+                <CreateStory LeftSide={LeftSideImage} Preview={PreviewImage} />
               </PrivateRoute>
             }
           />
