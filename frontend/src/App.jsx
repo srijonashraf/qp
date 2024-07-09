@@ -48,10 +48,10 @@ const App = () => {
             path="/*"
             element={
               <Fragment>
-                <div className="d-flex flex-column vh-100 align-items-center justify-content-center">
-                  <p className="text-center fs-2">Page Not Found</p>
+                <div className="flex flex-col h-screen items-center justify-center">
+                  <p className="text-center text-lg">Page Not Found</p>
                   <button
-                    className="btn btn-primary my-2"
+                    className="px-5 py-3 rounded-md text-white bg-brand-secondary my-2"
                     onClick={() => (window.location.href = "/")}
                   >
                     Return to Home
