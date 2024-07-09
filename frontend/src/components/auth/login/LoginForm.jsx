@@ -1,7 +1,35 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { userLogin } from "../../../api/apiRequest";
+import { errorToast, successToast } from "../../../helper/toasterHelper";
 
 const LoginForm = () => {
+  const [formValue, setFormValue] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const loginRequest = async (e) => {
+    e.preventDefault();
+    if (formValue.email.length === 0 || formValue.password.length === 0) {
+      errorToast("Please enter all the fields");
+    } else {
+      const response = await userLogin(formValue);
+      if (response) {
+        successToast("Login Successful");
+        navigate("/newsfeed");
+        setFormValue({
+          email: "",
+          password: "",
+        });
+      } else {
+        errorToast("Failed to Login");
+      }
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[415px] bg-white rounded-md p-6">
       <form action="" className="flex flex-col gap-3">
@@ -17,6 +45,10 @@ const LoginForm = () => {
             id="email"
             placeholder="Enter your email address"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
+            value={formValue.email}
+            onChange={(e) =>
+              setFormValue({ ...formValue, email: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -31,6 +63,10 @@ const LoginForm = () => {
             id="password"
             placeholder="Enter your password"
             className="w-full p-2 rounded border border-slate-400 outline-none focus:border-2"
+            value={formValue.password}
+            onChange={(e) =>
+              setFormValue({ ...formValue, password: e.target.value })
+            }
           />
           <div className="flex justify-between">
             <div className="flex items-center gap-1">
@@ -45,6 +81,7 @@ const LoginForm = () => {
         <button
           className="w-full bg-brand-primary p-3
         rounded-[4px] text-white font-manrope font-semibold text-base mt-1 hover:bg-brand-primary/80"
+          onClick={loginRequest}
         >
           Login
         </button>
