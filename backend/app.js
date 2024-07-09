@@ -31,7 +31,7 @@ const corsOptions = {
   origin:
     process.env.NODE_ENV === "development"
       ? "http://localhost:5173"
-      : "https://linkwiz.netlify.app",
+      : "https://qp-frontend-henna.vercel.app/",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };
@@ -55,7 +55,7 @@ mongoose
 const isDevelopment = process.env.NODE_ENV === "development";
 const allowedOrigin = isDevelopment
   ? "http://localhost:5173"
-  : "https://linkwiz.netlify.app";
+  : "https://qp-frontend-henna.vercel.app/";
 
 app.use((req, res, next) => {
   res.header(
