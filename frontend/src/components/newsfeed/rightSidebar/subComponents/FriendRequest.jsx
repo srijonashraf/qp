@@ -10,7 +10,7 @@ const FriendRequest = () => {
   const [showAll, setShowAll] = useState(false);
 
   // Slice the SuggestionList to show only first 5 items initially
-  const initialRequests = SuggestionList.slice(0, 5);
+  const initialRequests = SuggestionList?.slice(0, 5);
 
   // Toggle to show all items
   const handleShowAll = () => {
@@ -32,7 +32,7 @@ const FriendRequest = () => {
       </div>
       <ul className="flex flex-col py-2 gap-4">
         {/* Map over initialRequests instead of SuggestionList */}
-        {initialRequests.map((item, key) => (
+        {initialRequests?.map((item, key) => (
           <li key={key}>
             <div className="flex gap-2 items-center">
               <img
