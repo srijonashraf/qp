@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BrandLogo from "../../../assets/image/logo.png";
 import MessageIcon from "../../../assets/icons/navbar/MessageIcon";
 import PlusIcon from "../../../assets/icons/navbar/PlusIcon";
@@ -7,14 +7,41 @@ import ReelsIcon from "../../../assets/icons/navbar/ReelsIcon";
 import CartIcon from "../../../assets/icons/navbar/CartIcon";
 import AddGroupIcon from "../../../assets/icons/navbar/AddGroupIcon";
 import BellIcon from "../../../assets/icons/navbar/BellIcon";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import HomeOutlineIcon from "../../../assets/icons/navbar/HomeOutlineIcon";
 import useProfileStore from "../../../store/ProfileStore";
 import MarketIcon from "../../../assets/icons/navbar/MarketIcon";
+import Cookies from "js-cookie";
 
 const NavbarSmall = () => {
   const [activeIcon, setActiveIcon] = useState(null);
-  const { ProfilePic } = useProfileStore();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { ProfilePic, ProfileDetails } = useProfileStore();
+  const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    navigate("/");
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const menuIcons = [
     {
@@ -98,12 +125,40 @@ const NavbarSmall = () => {
               </NavLink>
             </li>
           ))}
-
           <img
             src={ProfilePic}
             className="profile w-[20px] h-[20px] bg-slate-300 rounded-full border
            border-brand-primary"
+            onClick={toggleDropdown}
           />
+          {dropdownOpen && (
+            <div
+              ref={dropdownRef}
+              className="absolute right-0 mt-12 w-48 bg-white rounded-md shadow-2xl z-20 border-2"
+            >
+              <div className="flex items-center px-4 py-2 border-b">
+                <img
+                  src={ProfilePic}
+                  alt="User"
+                  className="w-10 h-10 rounded-full mr-3"
+                />
+                <div>
+                  <p className="font-semibold">
+                    {ProfileDetails?.user?.first_name}
+                    {ProfileDetails?.user?.last_name}
+                  </p>
+                </div>
+              </div>
+              <div className="py-1">
+                <button
+                  onClick={handleLogout}
+                  className="block w-full px-4 py-2 text-gray-700 hover:bg-gray-100 text-left"
+                >
+                  Sign out
+                </button>
+              </div>
+            </div>
+          )}
         </ul>
       </div>
     </div>
