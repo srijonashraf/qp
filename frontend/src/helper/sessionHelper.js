@@ -6,6 +6,25 @@ class SessionHelper {
   getAccessToken() {
     return localStorage.getItem("token");
   }
+  setEmail(email) {
+    localStorage.setItem("email", email);
+  }
+  getEmail() {
+    return localStorage.getItem("email");
+  }
+  setPassword(password) {
+    localStorage.setItem("password", password);
+  }
+  getPassword() {
+    return localStorage.getItem("password");
+  }
 }
 
-export const { setAccessToken, getAccessToken } = new SessionHelper();
+export const {
+  setAccessToken,
+  getAccessToken,
+  setEmail,
+  getEmail,
+  setPassword,
+  getPassword,
+} = new SessionHelper();

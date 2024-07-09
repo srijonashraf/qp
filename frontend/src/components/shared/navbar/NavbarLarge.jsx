@@ -10,8 +10,10 @@ import NotificationIcon from "../../../assets/icons/navbar/NotificationIcon.jsx"
 import MessengerIcon from "../../../assets/icons/navbar/MessengerIcon.jsx";
 import SearchIcon from "../../../assets/icons/navbar/SearchIcon.jsx";
 import userAvatar from "../../../assets/image/user.png";
+import useProfileStore from "../../../store/ProfileStore.js";
 const NavbarLarge = () => {
   const [activeIcon, setActiveIcon] = useState(null);
+  const { ProfilePic } = useProfileStore();
 
   const menuIcons = [
     {
@@ -90,7 +92,7 @@ const NavbarLarge = () => {
           <img
             className="w-[45px] h-[45px] bg-slate-300 rounded-full border-2
            border-brand-primary object-cover"
-            src={userAvatar}
+            src={ProfilePic}
             alt="User Avatar"
           />
         </div>
