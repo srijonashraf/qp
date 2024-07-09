@@ -1,8 +1,46 @@
 import React from "react";
 import useStateStore from "../../../store/StateStore";
+import { createStory } from "../../../api/apiRequest";
+import { errorToast, successToast } from "../../../helper/toasterHelper";
+import { useNavigate } from "react-router-dom";
 
 const PreviewText = () => {
-  const { backgroundColor, textContent } = useStateStore();
+  const {
+    backgroundColor,
+    textContent,
+    privacy,
+    setCreateStory,
+    createStoryFlag,
+    setTextContent,
+  } = useStateStore();
+
+  const navigate = useNavigate();
+
+  const handleCreateStory = async () => {
+    const formValue = {
+      userID: "6144f347b3f5d84c8c5f9d43",
+      type: "text",
+      text: textContent,
+      background: backgroundColor,
+      privacy: privacy,
+    };
+
+    const response = await createStory(formValue);
+    if (response) {
+      successToast("Story Created Successfully");
+      setCreateStory(false);
+      setTextContent("");
+      navigate("/newsfeed");
+    } else {
+      errorToast("Something went wrong");
+    }
+  };
+
+  React.useEffect(() => {
+    if (createStoryFlag) {
+      handleCreateStory();
+    }
+  }, [createStoryFlag]);
 
   return (
     <div className="mx-5 my-10 bg-white shadow-lg flex flex-col gap-5 rounded-md h-screen">
@@ -21,6 +59,12 @@ const PreviewText = () => {
             />
           </div>
         </div>
+        <button
+          onClick={handleCreateStory}
+          className="bg-brand-primary hidden max-sm:block text-white py-2 rounded-md font-semibold font-poppins text-[15px] mt-5"
+        >
+          Create Story
+        </button>
       </div>
     </div>
   );

@@ -1,12 +1,14 @@
 import { create } from "zustand";
 
 const useStateStore = create((set) => ({
-  update: null,
   backgroundColor: "#334BC6",
-  textContent: null,
-  setUpdate: () => set({ update: Date.now() }),
+  textContent: "",
+  privacy: "Public",
+  createStoryFlag: false,
   setBackgroundColor: (color) => set({ backgroundColor: color }),
   setTextContent: (text) => set({ textContent: text }),
+  setPrivacy: (privacy) => set({ privacy: privacy }),
+  setCreateStory: (flag) => set({ createStoryFlag: flag }),
 }));
 
 export default useStateStore;

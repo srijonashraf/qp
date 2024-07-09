@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import useStateStore from "./../../../store/StateStore";
+import useStateStore from "../../../store/StateStore";
 
 const LeftSideText = () => {
-  const { setBackgroundColor, setTextContent } = useStateStore();
+  const { setBackgroundColor, setTextContent, setPrivacy, setCreateStory } =
+    useStateStore();
 
   const [backgroundColor, updateBackgroundColor] = useState("#334BC6");
   const [textValue, setTextValue] = useState("");
+  const [privacy, setPrivacyState] = useState("Public");
 
   const handleTextChange = (e) => {
     const text = e.target.value;
@@ -16,6 +18,12 @@ const LeftSideText = () => {
   const handleBackgroundColorChange = (color) => {
     updateBackgroundColor(color);
     setBackgroundColor(color);
+  };
+
+  const handlePrivacyChange = (e) => {
+    const privacyValue = e.target.value;
+    setPrivacyState(privacyValue);
+    setPrivacy(privacyValue);
   };
 
   return (
@@ -53,14 +61,19 @@ const LeftSideText = () => {
       <div>
         <select
           name="privacy"
-          id=""
+          id="privacy-select"
           className="w-full border outline-none p-2 font-inter font-normal text-base"
+          value={privacy}
+          onChange={handlePrivacyChange}
         >
           <option value="Public">Public</option>
           <option value="Friends">Friends</option>
         </select>
       </div>
-      <button className="bg-brand-primary text-white py-2 rounded-md font-semibold font-poppins text-[15px] mt-5">
+      <button
+        className="bg-brand-primary text-white py-2 rounded-md font-semibold font-poppins text-[15px] mt-5"
+        onClick={() => setCreateStory(true)}
+      >
         Create Story
       </button>
     </div>

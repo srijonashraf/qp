@@ -67,3 +67,17 @@ export const commentSubmission = async (formValue) => {
   }
 };
 
+export const createStory = async (formValue) => {
+  const url = `https://qp-rho.vercel.app/api/create-story`;
+  try {
+    const res = await axios.post(url, formValue, axiosHeader());
+    if (res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};

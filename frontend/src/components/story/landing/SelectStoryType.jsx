@@ -13,7 +13,7 @@ const SelectStoryType = () => {
         <div
           className=" h-[250px] lg:h-[350px] w-full cursor-pointer rounded  p-2 flex items-center justify-center flex-col 
         shadow-sm bg-gradient-to-t from-[#F25268] to-[#FD1EBE]"
-          onClick={() => navigate("/text-story")}
+          onClick={() => navigate("/photo-story")}
         >
           <div className="flex flex-col items-center w-full gap-2">
             <StoryImageIcon className="max-sm:w-12" />
@@ -25,7 +25,7 @@ const SelectStoryType = () => {
         <div
           className=" h-[250px] lg:h-[350px] w-full cursor-pointer rounded p-2 flex items-center justify-center flex-col 
         shadow-sm bg-gradient-to-t from-[#136CAC] to-[#59DDDD]"
-          onClick={() => navigate("/photo-story")}
+          onClick={() => navigate("/text-story")}
         >
           <div className="flex flex-col items-center w-full gap-2">
             <StoryTextIcon className="max-sm:w-12" />
