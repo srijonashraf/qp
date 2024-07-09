@@ -13,7 +13,7 @@ export default () => (
       height="21"
       rx="10.5"
       stroke="#F6B83C"
-      stroke-width="2"
+      strokeWidth="2"
     />
     <path
       d="M4.99805 13H17.998C17.998 13 16.6979 17.8584 11.8874 17.9972C7.07691 18.136 4.99805 13 4.99805 13Z"

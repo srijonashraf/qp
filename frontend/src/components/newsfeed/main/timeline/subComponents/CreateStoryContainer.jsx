@@ -6,7 +6,7 @@ import userStory from "../../../../../assets/image/user.png";
 import StoryPlusIcon from "../../../../../assets/icons/newsfeed/StoryPlusIcon";
 import RightArrowIcon from "../../../../../assets/icons/newsfeed/RightArrowIcon";
 
-const CreateStory = () => {
+const CreateStoryContainer = () => {
   const story = [
     {
       name: "Vish Patil",
@@ -60,4 +60,4 @@ const CreateStory = () => {
   );
 };
 
-export default CreateStory;
+export default CreateStoryContainer;

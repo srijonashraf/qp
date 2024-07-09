@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import userAvatar from "../../../../../assets/image/user.png";
 import sea from "../../../../../assets/image/sea.jpg";
 import ThreedotIcon from "../../../../../assets/icons/newsfeed/ThreedotIcon";
@@ -13,11 +13,30 @@ import EmojiIcon from "../../../../../assets/icons/newsfeed/EmojiIcon";
 import CameraIcon from "../../../../../assets/icons/newsfeed/CameraIcon";
 import GIFIcon from "../../../../../assets/icons/newsfeed/GIFIcon";
 import StickerIcon from "../../../../../assets/icons/newsfeed/StickerIcon";
-import HeartReactIcon from "../../../../../assets/icons/newsfeed/HeartReactIcon";
+import HeartIcon from "../../../../../assets/icons/newsfeed/HeartIcon";
+import AngryIcon from "../../../../../assets/icons/newsfeed/AngryIcon";
+import WowIcon from "../../../../../assets/icons/newsfeed/WowIcon";
 import LikeBlueIcon from "../../../../../assets/icons/newsfeed/LikeBlueIcon";
 import HahaIcon from "../../../../../assets/icons/newsfeed/HahaIcon";
+import SadIcon from "../../../../../assets/icons/newsfeed/SadIcon";
+import ReactionContainer from "./ReactionContainer";
 
 const AllPost = () => {
+  const [isPostReactionHovered, setIsPostReactionHovered] = useState(false);
+  const [isCommentReactionHovered, setIsCommentReactionHovered] =
+    useState(false);
+
+  const [isCommentFocused, setIsCommentFocused] = useState(false);
+
+  const commentRef = useRef(null);
+
+  useEffect(() => {
+    if (isCommentFocused) {
+      commentRef.current.focus();
+      setIsCommentFocused(false);
+    }
+  }, [isCommentFocused]);
+
   const post = {
     name: "Memes Group",
     description:
@@ -61,19 +80,17 @@ const AllPost = () => {
   const getReactionEmoji = (reaction) => {
     switch (reaction.type) {
       case "like":
-        return <LikeBlueIcon />;
+        return <LikeBlueIcon width="20" height="20" />;
       case "love":
-        return <HeartReactIcon />;
+        return <HeartIcon width="20" height="20" />;
       case "haha":
-        return <HahaIcon />;
+        return <HahaIcon width="20" height="20" />;
       case "wow":
-        return "😲";
+        return <WowIcon width="20" height="20" />;
       case "sad":
-        return "😢";
+        return <SadIcon width="20" height="20" />;
       case "angry":
-        return "😠";
-      case "dislike":
-        return "👎";
+        return <AngryIcon width="20" height="20" />;
       default:
         return "";
     }
@@ -132,11 +149,23 @@ const AllPost = () => {
         </div>
       </section>
       {/* React Icon, Comment Icon, Share Icon */}
-      <section className="p-4 flex justify-between">
-        <p className="flex items-center gap-1 font-poppins font-medium text-base cursor-pointer">
+      <section className="p-4 flex justify-between relative ">
+        <div
+          className=" flex items-center gap-1 font-poppins font-medium text-base cursor-pointer"
+          onMouseEnter={() => setIsPostReactionHovered(true)}
+          onMouseLeave={() => setIsPostReactionHovered(false)}
+        >
+          {isPostReactionHovered && (
+            <div className="absolute bottom-6 left-0">
+              <ReactionContainer open={true} />
+            </div>
+          )}
           <LikeIcon /> Like
-        </p>
-        <p className="font-poppins font-medium text-base cursor-pointer">
+        </div>
+        <p
+          className="font-poppins font-medium text-base cursor-pointer"
+          onClick={() => setIsCommentFocused(true)}
+        >
           Comment
         </p>
         <p className="font-poppins font-medium text-base cursor-pointer">
@@ -183,9 +212,20 @@ const AllPost = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex gap-3 font-semibold text-xs px-3 mt-1">
+              <div className="relative flex gap-3 font-semibold text-xs px-3 mt-1">
                 {comment.commentTime}
-                <p className="cursor-pointer">Like</p>
+                <p
+                  className="cursor-pointer"
+                  onMouseEnter={() => setIsCommentReactionHovered(true)}
+                  onMouseLeave={() => setIsCommentReactionHovered(false)}
+                >
+                  Like
+                </p>
+                {isCommentReactionHovered && (
+                  <div className="absolute bottom-6 left-0">
+                    <ReactionContainer open={true} />
+                  </div>
+                )}
                 <p className="cursor-pointer">Reply</p>
               </div>
               <div>
@@ -196,32 +236,38 @@ const AllPost = () => {
                       View <span>{comment.replyCount}</span> Reply
                     </p>
                   </div>
-                ) : null}
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
         </div>
-
-        {/* Create Comment */}
-        <div className="flex items-center gap-2 mt-3 relative">
+        {/* Add a Comment */}
+        <section className="flex justify-between items-end gap-2 mt-3">
           <img
             src={userAvatar}
             alt=""
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-10 h-10 rounded-full object-cover cursor-pointer"
           />
-          <input
-            type="text"
-            placeholder="Write a public comment..."
-            className="relative outline-none bg-body-base-color/15 p-2 w-full rounded-md
-            placeholder:font-poppins placeholder:font-normal placeholder:text-[13px] pr-10"
-          />
-          <div className="absolute right-2 flex gap-2 items-center">
-            <EmojiIcon className="cursor-pointer" />
-            <CameraIcon className="cursor-pointer" />
-            <GIFIcon className="cursor-pointer" />
-            <StickerIcon className="cursor-pointer" />
+          <div
+            className="relative grow rounded-full flex items-center bg-body-base-color/20
+           px-3 py-2 gap-3"
+          >
+            <input
+              ref={commentRef}
+              type="text"
+              placeholder="Write a comment..."
+              className="font-poppins text-sm bg-transparent outline-none border-none w-full"
+            />
+            <div className="flex items-center gap-2 text-gray-600 cursor-pointer">
+              <EmojiIcon />
+              <CameraIcon />
+              <GIFIcon />
+              <StickerIcon />
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );

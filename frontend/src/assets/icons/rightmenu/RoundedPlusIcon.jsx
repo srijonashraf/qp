@@ -13,14 +13,14 @@ export default ({ ...props }) => (
     <path
       d="M18 25L18 12"
       stroke="white"
-      stroke-width="1.2"
-      stroke-linecap="square"
+      strokeWidth="1.2"
+      strokeLinecap="square"
     />
     <path
       d="M24 19L11 19"
       stroke="white"
-      stroke-width="1.2"
-      stroke-linecap="square"
+      strokeWidth="1.2"
+      strokeLinecap="square"
     />
   </svg>
 );

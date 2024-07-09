@@ -5,7 +5,7 @@ import PhotoIcon from "../../../../../assets/icons/newsfeed/PhotoIcon";
 import FeelingIcon from "../../../../../assets/icons/newsfeed/FeelingIcon";
 import ImageOnlyIcon from "../../../../../assets/icons/newsfeed/ImageOnlyIcon.jsx";
 
-const CreatePost = () => {
+const CreatePostContainer = () => {
   const activity = [
     {
       icon: <LiveIcon />,
@@ -61,4 +61,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreatePostContainer;
