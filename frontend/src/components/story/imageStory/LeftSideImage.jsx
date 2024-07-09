@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StoryView = () => {
+const LeftSideImage = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const StoryView = () => {
     );
 };
 
-export default StoryView;
+export default LeftSideImage;

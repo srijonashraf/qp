@@ -12,11 +12,24 @@ import HomeOutlineIcon from "../../../assets/icons/navbar/HomeOutlineIcon";
 import useProfileStore from "../../../store/ProfileStore";
 import MarketIcon from "../../../assets/icons/navbar/MarketIcon";
 import Cookies from "js-cookie";
+import { getEmail, getPassword } from "../../../helper/sessionHelper";
 
 const NavbarSmall = () => {
   const [activeIcon, setActiveIcon] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { ProfilePic, ProfileDetails } = useProfileStore();
+  const { ProfilePic, ProfileDetails, ProfileDetailsRequest } =
+    useProfileStore();
+
+  useEffect(() => {
+    const fetchProfileDetails = async () => {
+      await ProfileDetailsRequest({
+        email: getEmail(),
+        password: getPassword(),
+      });
+    };
+    fetchProfileDetails();
+  }, [ProfileDetailsRequest]);
+
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 

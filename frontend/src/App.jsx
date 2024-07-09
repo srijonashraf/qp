@@ -7,10 +7,14 @@ import NavbarLarge from "./components/shared/navbar/NavbarLarge";
 import NavbarSmall from "./components/shared/navbar/NavbarSmall";
 import PrivateRoute from "./components/shared/private/PrivateRoute";
 import { getAccessToken } from "./helper/sessionHelper";
+import SelectStory from "./pages/SelectStory.jsx";
+import SelectStoryType from "./components/story/landing/SelectStoryType";
+import LeftSideText from "./components/story/textStory/LeftSideText";
+import PreviewText from "./components/story/textStory/PreviewText";
+import CreateStory from "./pages/CreateStory.jsx";
 
 const App = () => {
   const isLoggedIn = getAccessToken();
-
   return (
     <Fragment>
       <Router>
@@ -40,6 +44,26 @@ const App = () => {
                 <NavbarLarge />
                 <NavbarSmall />
                 <NewsFeed />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/create-story"
+            element={
+              <PrivateRoute>
+                <NavbarLarge />
+                <NavbarSmall />
+                <SelectStory Preview={SelectStoryType} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/text-story"
+            element={
+              <PrivateRoute>
+                <NavbarLarge />
+                <NavbarSmall />
+                <CreateStory LeftSide={LeftSideText} Preview={PreviewText} />
               </PrivateRoute>
             }
           />

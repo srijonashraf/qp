@@ -11,11 +11,24 @@ import SearchIcon from "../../../assets/icons/navbar/SearchIcon.jsx";
 import useProfileStore from "../../../store/ProfileStore.js";
 import MarketIcon from "../../../assets/icons/navbar/MarketIcon";
 import Cookies from "js-cookie";
+import { getEmail, getPassword } from "../../../helper/sessionHelper.js";
 
 const NavbarLarge = () => {
   const [activeIcon, setActiveIcon] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { ProfilePic, ProfileDetails } = useProfileStore();
+  const { ProfilePic, ProfileDetails, ProfileDetailsRequest } =
+    useProfileStore();
+
+  useEffect(() => {
+    const fetchProfileDetails = async () => {
+      await ProfileDetailsRequest({
+        email: getEmail(),
+        password: getPassword(),
+      });
+    };
+    fetchProfileDetails();
+  }, [ProfileDetailsRequest]);
+
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
@@ -74,7 +87,12 @@ const NavbarLarge = () => {
     <div className="bg-white shadow-sm h-[69px] lg:flex hidden">
       <div className="grid grid-cols-12 relative gap-6 w-full justify-center items-center px-2">
         <div className="col-span-4 flex gap-4">
-          <img src={brandLogo} alt="Quantum Logo" className="max-w-[45px]" />
+          <img
+            src={brandLogo}
+            alt="Quantum Logo"
+            className="max-w-[45px]"
+            onClick={() => navigate("/")}
+          />
           <div className="relative flex items-center justify-center max-w-[241px] w-full">
             <input
               type="text"

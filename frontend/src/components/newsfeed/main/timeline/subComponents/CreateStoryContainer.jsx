@@ -5,6 +5,7 @@ import story3 from "../../../../../assets/image/user2.png";
 import userStory from "../../../../../assets/image/user.png";
 import StoryPlusIcon from "../../../../../assets/icons/newsfeed/StoryPlusIcon";
 import RightArrowIcon from "../../../../../assets/icons/newsfeed/RightArrowIcon";
+import { useNavigate } from "react-router-dom";
 
 const CreateStoryContainer = () => {
   const story = [
@@ -22,6 +23,7 @@ const CreateStoryContainer = () => {
     },
   ];
 
+  const navigate = useNavigate();
   return (
     <div className="bg-white p-3 pb-8">
       <ul className="flex gap-1 justify-around items-center relative">
@@ -31,7 +33,10 @@ const CreateStoryContainer = () => {
             src={userStory}
             className="rounded-xl w-[150px] h-[216px] max-sm:w-[81px] max-sm:h-[125px]"
           />
-          <div className="absolute inset-0 flex justify-center items-end -bottom-3">
+          <div
+            className="absolute inset-0 flex justify-center items-end -bottom-3"
+            onClick={() => navigate("/create-story")}
+          >
             <StoryPlusIcon className="w-10 h-10 text-brand-primary max-sm:text-blue-700 cursor-pointer" />
           </div>
         </div>

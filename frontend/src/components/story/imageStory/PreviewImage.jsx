@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StoryCreate = () => {
+const PreviewImage = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const StoryCreate = () => {
     );
 };
 
-export default StoryCreate;
+export default PreviewImage;

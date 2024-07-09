@@ -1,10 +1,7 @@
+import Cookies from "js-cookie";
 class SessionHelper {
-  setAccessToken(accessToken) {
-    localStorage.setItem("token", accessToken);
-  }
-
   getAccessToken() {
-    return localStorage.getItem("token");
+    return Cookies.get("token");
   }
   setEmail(email) {
     localStorage.setItem("email", email);
@@ -20,11 +17,5 @@ class SessionHelper {
   }
 }
 
-export const {
-  setAccessToken,
-  getAccessToken,
-  setEmail,
-  getEmail,
-  setPassword,
-  getPassword,
-} = new SessionHelper();
+export const { getAccessToken, setEmail, getEmail, setPassword, getPassword } =
+  new SessionHelper();
