@@ -60,7 +60,7 @@ const PreviewImage = () => {
         <div className="w-full flex-grow bg-body-base-color/20 flex items-center justify-center">
           <div
             style={{ backgroundColor }}
-            className="h-[500px] flex items-center justify-center p-5 rounded-md relative"
+            className="lg:w-1/3 md:w-[75%] max-sm:w-[90%] h-[500px] flex items-center justify-center p-5 rounded-md relative"
           >
             {selectedImage && (
               <img
@@ -72,7 +72,9 @@ const PreviewImage = () => {
             )}
             {textContent && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <p className="font-poppins font-semibold text-base text-dark text-center p-5">{textContent}</p>
+                <p className="font-poppins font-semibold text-base text-dark text-center p-5">
+                  {textContent}
+                </p>
               </div>
             )}
           </div>
