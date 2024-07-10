@@ -4,7 +4,7 @@ import { createStory } from "../../../api/apiRequest";
 import { errorToast, successToast } from "../../../helper/toasterHelper";
 import { useNavigate } from "react-router-dom";
 
-const PreviewText = () => {
+const TextStoryPreview = () => {
   const {
     backgroundColor,
     textContent,
@@ -70,4 +70,4 @@ const PreviewText = () => {
   );
 };
 
-export default PreviewText;
+export default TextStoryPreview;

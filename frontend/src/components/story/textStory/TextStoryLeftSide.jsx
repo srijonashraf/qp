@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useStateStore from "../../../store/StateStore";
 
-const LeftSideText = () => {
+const TextStoryLeftSide = () => {
   const { setBackgroundColor, setTextContent, setPrivacy, setCreateStory } =
     useStateStore();
 
@@ -80,4 +80,4 @@ const LeftSideText = () => {
   );
 };
 
-export default LeftSideText;
+export default TextStoryLeftSide;

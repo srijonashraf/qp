@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { errorToast, successToast } from "../../../helper/toasterHelper";
 import { createStory } from "../../../api/apiRequest";
 
-const PreviewImage = () => {
+export default () => {
   const {
     backgroundColor,
     textContent,
+    textColor,
     privacy,
     selectedImage,
     imageScale,
@@ -72,7 +73,10 @@ const PreviewImage = () => {
             )}
             {textContent && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <p className="font-poppins font-semibold text-base text-dark text-center p-5">
+                <p
+                  style={{ color: textColor }}
+                  className="font-poppins font-semibold text-base text-dark text-center p-5"
+                >
                   {textContent}
                 </p>
               </div>
@@ -103,5 +107,3 @@ const PreviewImage = () => {
     </div>
   );
 };
-
-export default PreviewImage;

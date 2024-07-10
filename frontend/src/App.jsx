@@ -9,11 +9,11 @@ import PrivateRoute from "./components/shared/private/PrivateRoute";
 import { getAccessToken } from "./helper/sessionHelper";
 import SelectStory from "./pages/SelectStory.jsx";
 import SelectStoryType from "./components/story/landing/SelectStoryType";
-import LeftSideText from "./components/story/textStory/LeftSideText";
-import PreviewText from "./components/story/textStory/PreviewText";
+import TextStoryLeftSide from "./components/story/textStory/TextStoryLeftSide.jsx";
+import TextStoryPreview from "./components/story/textStory/TextStoryPreview.jsx";
 import CreateStory from "./pages/CreateStory.jsx";
-import LeftSideImage from "./components/story/imageStory/LeftSideImage.jsx";
-import PreviewImage from "./components/story/imageStory/PreviewImage.jsx";
+import ImageStoryLeftSide from "./components/story/imageStory/ImageStoryLeftSide.jsx";
+import ImageStoryPreview from "./components/story/imageStory/ImageStoryPreview.jsx";
 
 const App = () => {
   const isLoggedIn = getAccessToken();
@@ -65,7 +65,7 @@ const App = () => {
               <PrivateRoute>
                 <NavbarLarge />
                 <NavbarSmall />
-                <CreateStory LeftSide={LeftSideText} Preview={PreviewText} />
+                <CreateStory LeftSide={TextStoryLeftSide} Preview={TextStoryPreview} />
               </PrivateRoute>
             }
           />
@@ -75,7 +75,7 @@ const App = () => {
               <PrivateRoute>
                 <NavbarLarge />
                 <NavbarSmall />
-                <CreateStory LeftSide={LeftSideImage} Preview={PreviewImage} />
+                <CreateStory LeftSide={ImageStoryLeftSide} Preview={ImageStoryPreview} />
               </PrivateRoute>
             }
           />
