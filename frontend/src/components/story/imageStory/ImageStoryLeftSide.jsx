@@ -70,11 +70,6 @@ const ImageStoryLeftSide = () => {
       formData.append("image", imageFile); // Add image file to FormData
     }
 
-    // Log FormData content for debugging
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
-
     try {
       const response = await createStory(formData); // Ensure this function handles FormData
       if (response) {
@@ -97,6 +92,7 @@ const ImageStoryLeftSide = () => {
       <form
         className="flex flex-col gap-5"
         encType="multipart/form-data"
+        method="post"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-2">

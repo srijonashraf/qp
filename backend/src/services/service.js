@@ -4,9 +4,6 @@ import storyModel from "./../models/model.js";
 export const createStoryService = async (req) => {
   try {
     const { userID, type, text, background, textColor, privacy } = req.body;
-
-    // console.log(req.file.path);
-
     // Check if there's an image file to upload
     let imageResponse = null;
     if (req.file) {

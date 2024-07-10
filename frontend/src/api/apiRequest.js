@@ -70,7 +70,11 @@ export const commentSubmission = async (formValue) => {
 export const createStory = async (formValue) => {
   const url = `https://qp-rho.vercel.app/api/create-story`;
   try {
-    const res = await axios.post(url, formValue, axiosHeader());
+    const res = await axios.post(url, formValue, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     if (res.status === 200) {
       return true;
     } else {

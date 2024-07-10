@@ -32,7 +32,8 @@ const corsOptions = {
     process.env.NODE_ENV === "development"
       ? "http://localhost:5173"
       : "https://qp-frontend-henna.vercel.app/",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
 
@@ -40,6 +41,12 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use(hpp());
 app.use(mongoSanitize());
+
+//Error Handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
 //Connect to DB
 mongoose
@@ -58,10 +65,6 @@ const allowedOrigin = isDevelopment
   : "https://qp-frontend-henna.vercel.app/";
 
 app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
   res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
   res.header("Access-Control-Allow-Origin", allowedOrigin);
   res.header("Access-Control-Allow-Credentials", "true");
