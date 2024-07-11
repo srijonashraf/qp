@@ -25,7 +25,7 @@ const App = () => {
             <>
               <Route path="/" element={<Login />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Registration />} />
+              <Route path="/registration" element={<Registration />} />
             </>
           )}
 
@@ -65,7 +65,10 @@ const App = () => {
               <PrivateRoute>
                 <NavbarLarge />
                 <NavbarSmall />
-                <CreateStory LeftSide={TextStoryLeftSide} Preview={TextStoryPreview} />
+                <CreateStory
+                  LeftSide={TextStoryLeftSide}
+                  Preview={TextStoryPreview}
+                />
               </PrivateRoute>
             }
           />
@@ -75,7 +78,10 @@ const App = () => {
               <PrivateRoute>
                 <NavbarLarge />
                 <NavbarSmall />
-                <CreateStory LeftSide={ImageStoryLeftSide} Preview={ImageStoryPreview} />
+                <CreateStory
+                  LeftSide={ImageStoryLeftSide}
+                  Preview={ImageStoryPreview}
+                />
               </PrivateRoute>
             }
           />

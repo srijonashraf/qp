@@ -48,7 +48,6 @@ const ImageStoryLeftSide = () => {
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      console.log(e.target.files[0]);
       setImageFile(e.target.files[0]);
       setSelectedImage(URL.createObjectURL(e.target.files[0])); // For preview purposes
     }

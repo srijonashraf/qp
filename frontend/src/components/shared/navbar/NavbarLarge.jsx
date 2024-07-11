@@ -48,7 +48,7 @@ const NavbarLarge = () => {
 
   const handleLogout = () => {
     Cookies.remove("token");
-    navigate("/");
+    window.location.reload();
   };
 
   const toggleDropdown = () => {
