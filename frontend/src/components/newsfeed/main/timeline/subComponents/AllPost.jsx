@@ -26,7 +26,7 @@ import { commentSubmission } from "../../../../../api/apiRequest";
 const AllPost = () => {
   const [hoveredReaction, setHoveredReaction] = useState(null);
   const [hoveredReactionReply, setHoveredReactionReply] = useState(null);
-  const [focusedComment, setFocusedComment] = useState(null);
+  const [focusId, setFocusId] = useState(null);
   const [showMoreReplies, setShowMoreReplies] = useState(false);
   const [commentValue, setCommentValue] = useState({
     user_id: "",
@@ -36,15 +36,13 @@ const AllPost = () => {
   });
   const { Posts, FetchPostsRequest } = usePostStore();
   const { ProfilePic } = useProfileStore();
-  const commentRefs = useRef([]);
-  const commentInput = useRef(null);
 
+  const inputRefs = useRef({});
   useEffect(() => {
-    if (focusedComment !== null) {
-      commentInput.current.focus();
-      setFocusedComment(null);
+    if (focusId && inputRefs.current[focusId]) {
+      inputRefs.current[focusId].focus();
     }
-  }, [focusedComment]);
+  }, [focusId]);
 
   const getReactionEmoji = (reaction) => {
     switch (reaction) {
@@ -66,7 +64,7 @@ const AllPost = () => {
   };
 
   const handleCommentSubmission = async (userId, postId, comment, e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     const formValue = {
       user_id: userId,
       post_id: postId,
@@ -189,7 +187,7 @@ const AllPost = () => {
             </div>
             <p
               className="font-poppins font-medium text-base cursor-pointer"
-              onClick={() => setFocusedComment(post?._id)}
+              onClick={() => setFocusId(post?._id)}
             >
               Comment
             </p>
@@ -252,7 +250,7 @@ const AllPost = () => {
                         <p className="cursor-pointer">Like</p>
                         <p
                           className="cursor-pointer"
-                          onClick={() => setFocusedComment(postIndex)}
+                          onClick={() => setFocusId(post?._id)}
                         >
                           Reply
                         </p>
@@ -306,7 +304,7 @@ const AllPost = () => {
                                   <p className="cursor-pointer px-2">Like</p>
                                   <p
                                     className="cursor-pointer"
-                                    onClick={() => setFocusedComment(postIndex)}
+                                    onClick={() => setFocusId(post?._id)}
                                   >
                                     Reply
                                   </p>
@@ -365,8 +363,7 @@ const AllPost = () => {
                   }
                 >
                   <input
-                    ref={commentInput}
-                    id={post._id}
+                    ref={(el) => (inputRefs.current[post._id] = el)}
                     type="text"
                     placeholder="Write a comment..."
                     className="font-poppins text-sm bg-transparent outline-none border-none w-full"
