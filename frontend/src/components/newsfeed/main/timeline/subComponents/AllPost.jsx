@@ -27,7 +27,7 @@ const AllPost = () => {
   const [hoveredReaction, setHoveredReaction] = useState(null);
   const [hoveredReactionReply, setHoveredReactionReply] = useState(null);
   const [focusedComment, setFocusedComment] = useState(null);
-  const [showMoreReplies, setShowMoreReplies] = useState(false); // State to toggle showing all replies
+  const [showMoreReplies, setShowMoreReplies] = useState(false);
   const [commentValue, setCommentValue] = useState({
     user_id: "",
     post_id: "",
@@ -73,19 +73,13 @@ const AllPost = () => {
       comment_name: comment,
     };
 
-    // Disable input during submission
-    commentInput.current.disabled = true;
-
     const response = await commentSubmission(formValue);
     if (response) {
       await FetchPostsRequest();
-      setCommentValue({ ...commentValue, comment_name: "" }); // Clear input field
+      setCommentValue({ ...commentValue, comment_name: "" });
     } else {
       console.log("Something Went Wrong");
     }
-
-    // Re-enable input after submission
-    commentInput.current.disabled = false;
   };
 
   return (
@@ -186,6 +180,8 @@ const AllPost = () => {
                     open={true}
                     userId={post?.user_id}
                     postId={post?._id}
+                    commentReaction={true}
+                    replyReaction={false}
                   />
                 </div>
               )}
@@ -193,7 +189,7 @@ const AllPost = () => {
             </div>
             <p
               className="font-poppins font-medium text-base cursor-pointer"
-              onClick={() => setFocusedComment(postIndex)}
+              onClick={() => setFocusedComment(post?._id)}
             >
               Comment
             </p>
@@ -208,23 +204,28 @@ const AllPost = () => {
             {/* Comments View */}
             {post?.comments?.map((comment, commentIndex) => (
               <div key={commentIndex}>
-                <div className="flex gap-2 mt-2 items-start">
-                  <img
-                    src={`https://quantumpossibilities.eu:82/uploads/posts/${comment.user_id?.profile_pic}`}
-                    alt=""
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
+                <div className="flex gap-2 mt-2 items-start relative">
+                  <div>
+                    <img
+                      src={`https://quantumpossibilities.eu:82/uploads/posts/${comment.user_id?.profile_pic}`}
+                      alt=""
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <div className="relative flex flex-col gap-2 rounded-2xl bg-body-base-color/20 p-3">
+                      <div className="flex flex-col gap-2 rounded-2xl bg-body-base-color/20 p-3">
                         <p className="font-poppins font-medium text-[14px] cursor-pointer">
                           {comment?.user_id?.first_name}{" "}
                           {comment?.user_id?.last_name}
                         </p>
-                        <p className="font-poppins font-normal text-xs leading-[18px] relative">
+                        <p className="font-poppins font-normal text-xs leading-[18px]">
                           {comment.comment_name}
                         </p>
-                        <div className="absolute flex items-center -bottom-3 right-10 bg-white px-2 rounded-full shadow-md font-poppins font-normal text-sm text-gray-600">
+                        <div
+                          className="absolute self-end top-16 flex bg-white px-2 rounded-full 
+                        shadow-md font-poppins font-normal text-sm text-gray-600"
+                        >
                           {comment?.comment_reactions?.map(
                             (reaction, index) => (
                               <span key={index}>
@@ -240,31 +241,32 @@ const AllPost = () => {
                       </div>
                     </div>
                     <div className="flex flex-col">
-                      <div className="relative flex gap-2 items-center mt-4 text-gray-400 font-poppins font-medium text-sm">
-                        <p
-                          className="cursor-pointer"
-                          onMouseEnter={() =>
-                            setHoveredReaction(`${postIndex}-${commentIndex}`)
-                          }
-                          onMouseLeave={() => setHoveredReaction(null)}
-                        >
-                          Like
-                        </p>
-                        {hoveredReaction === `${postIndex}-${commentIndex}` && (
-                          <div className="absolute bottom-0 left-5 w-[220px]">
-                            <ReactionContainer
-                              open={true}
-                              userId={post?.user_id}
-                              postId={post?._id}
-                            />
-                          </div>
-                        )}
+                      <div
+                        className="flex gap-2 items-center mt-4 text-gray-400 
+                        font-poppins font-medium text-sm"
+                        onMouseEnter={() =>
+                          setHoveredReaction(`${postIndex}-${commentIndex}`)
+                        }
+                        onMouseLeave={() => setHoveredReaction(null)}
+                      >
+                        <p className="cursor-pointer">Like</p>
                         <p
                           className="cursor-pointer"
                           onClick={() => setFocusedComment(postIndex)}
                         >
                           Reply
                         </p>
+                        {hoveredReaction === `${postIndex}-${commentIndex}` && (
+                          <div className="absolute top-10 w-[220px]">
+                            <ReactionContainer
+                              open={true}
+                              userId={post?.user_id}
+                              postId={post?._id}
+                              commentReaction={false}
+                              replyReaction={true}
+                            />
+                          </div>
+                        )}
                       </div>
 
                       {/* Toggle for viewing more replies */}
@@ -290,20 +292,24 @@ const AllPost = () => {
                                   </div>
                                 </div>
 
-                                <div className="flex gap-2 items-center mt-2 text-gray-400 font-poppins font-medium text-sm">
-                                  <div
-                                    className="cursor-pointer px-2"
-                                    onMouseEnter={() =>
-                                      setHoveredReactionReply(
-                                        `${postIndex}-${replyIndex}`
-                                      )
-                                    }
-                                    onMouseLeave={() =>
-                                      setHoveredReactionReply(null)
-                                    }
+                                <div
+                                  className="flex gap-2 items-center mt-2 text-gray-400 font-poppins font-medium text-sm"
+                                  onMouseEnter={() =>
+                                    setHoveredReactionReply(
+                                      `${postIndex}-${replyIndex}`
+                                    )
+                                  }
+                                  onMouseLeave={() =>
+                                    setHoveredReactionReply(null)
+                                  }
+                                >
+                                  <p className="cursor-pointer px-2">Like</p>
+                                  <p
+                                    className="cursor-pointer"
+                                    onClick={() => setFocusedComment(postIndex)}
                                   >
-                                    Like
-                                  </div>
+                                    Reply
+                                  </p>
                                   {hoveredReactionReply ===
                                     `${postIndex}-${replyIndex}` && (
                                     <div className="absolute top-10 left-5 w-[220px]">
@@ -311,15 +317,11 @@ const AllPost = () => {
                                         open={true}
                                         userId={post?.user_id}
                                         postId={post?._id}
+                                        commentReaction={false}
+                                        replyReaction={true}
                                       />
                                     </div>
                                   )}
-                                  <p
-                                    className="cursor-pointer"
-                                    onClick={() => setFocusedComment(postIndex)}
-                                  >
-                                    Reply
-                                  </p>
                                 </div>
                               </div>
                             ))
@@ -352,7 +354,7 @@ const AllPost = () => {
               />
               <div className="w-full">
                 <form
-                  className="relative rounded-full flex items-center bg-body-base-color/20 px-3 py-2 gap-3 w-full"
+                  className="rounded-full flex items-center bg-body-base-color/20 px-3 py-2 gap-3 w-full"
                   onSubmit={(e) =>
                     handleCommentSubmission(
                       post.user_id,
@@ -364,6 +366,7 @@ const AllPost = () => {
                 >
                   <input
                     ref={commentInput}
+                    id={post._id}
                     type="text"
                     placeholder="Write a comment..."
                     className="font-poppins text-sm bg-transparent outline-none border-none w-full"

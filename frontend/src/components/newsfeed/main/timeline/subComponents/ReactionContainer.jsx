@@ -8,20 +8,28 @@ import wowGIF from "../../../../../assets/gifs/wow.gif";
 import { reactionSubmission } from "../../../../../api/apiRequest";
 import usePostStore from "../../../../../store/PostStore";
 
-const ReactionContainer = ({ open, userId, postId }) => {
+const ReactionContainer = ({
+  open,
+  userId,
+  postId,
+  commentReaction,
+  replyReaction,
+}) => {
   const { FetchPostsRequest } = usePostStore();
   const handleReactionSubmission = async (reactionName) => {
-    const formValue = {
-      post_id: postId,
-      reaction_type: reactionName,
-      user_id: userId,
-    };
+    if (commentReaction) {
+      const formValue = {
+        post_id: postId,
+        reaction_type: reactionName,
+        user_id: userId,
+      };
 
-    const response = await reactionSubmission(formValue);
-    if (response) {
-      await FetchPostsRequest();
-    } else {
-      console.log("Failed to Save Reaction");
+      const response = await reactionSubmission(formValue);
+      if (response) {
+        await FetchPostsRequest();
+      } else {
+        console.log("Failed to Save Reaction");
+      }
     }
   };
 

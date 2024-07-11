@@ -19,8 +19,6 @@ const RegistrationForm = () => {
     isAccept: false,
   });
 
-  console.log(formValue);
-
   const navigate = useNavigate();
 
   const registrationRequest = async (e) => {
