@@ -44,14 +44,20 @@ const CreateStoryContainer = () => {
         {story.map((item, index) => (
           <li key={index} className="flex relative justify-between">
             {/*Other's Story*/}
-            <img
-              src={item.thumbnail}
-              alt="User Story"
-              className="w-[150px] h-[216px] max-sm:w-[81px] max-sm:h-[125px] rounded-xl cursor-pointer"
-            />
+            <div
+              onClick={() => navigate("/view-story")}
+              className="cursor-pointer"
+            >
+              <img
+                src={item.thumbnail}
+                alt="User Story"
+                className="w-[150px] h-[216px] max-sm:w-[81px] max-sm:h-[125px] rounded-xl cursor-pointer"
+              />
+            </div>
             {/* User Profile Picture */}
             <div className="absolute inset-0 flex justify-center items-end -bottom-3">
               <img
+                onClick={() => navigate("/view-story")}
                 src={item.thumbnail}
                 alt="User Profile Picture"
                 className="w-10 h-10 rounded-full object-cover border-2 border-brand-primary cursor-pointer"

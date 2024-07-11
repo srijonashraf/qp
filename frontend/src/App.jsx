@@ -14,6 +14,7 @@ import TextStoryPreview from "./components/story/textStory/TextStoryPreview.jsx"
 import CreateStory from "./pages/CreateStory.jsx";
 import ImageStoryLeftSide from "./components/story/imageStory/ImageStoryLeftSide.jsx";
 import ImageStoryPreview from "./components/story/imageStory/ImageStoryPreview.jsx";
+import ViewStory from "./components/story/viewStory/ViewStory.jsx";
 
 const App = () => {
   const isLoggedIn = getAccessToken();
@@ -82,6 +83,16 @@ const App = () => {
                   LeftSide={ImageStoryLeftSide}
                   Preview={ImageStoryPreview}
                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/view-story"
+            element={
+              <PrivateRoute>
+                <NavbarLarge />
+                <NavbarSmall />
+                <ViewStory />
               </PrivateRoute>
             }
           />
