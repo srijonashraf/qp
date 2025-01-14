@@ -28,6 +28,6 @@
 
 https://documenter.getpostman.com/view/28939375/2sA3e2gpZN
 
-## Production URL:
+## Production URL
 
 https://qp-frontend-henna.vercel.app/
